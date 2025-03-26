@@ -7,9 +7,8 @@ def add_task(x: int, y: int) -> int:
 
 @flow(log_prints=True)
 def my_minio_flow(a: int, b: int):
-    """使用 MinIO 持久化的 Flow"""
     result = add_task(x=a, y=b)
-    print(f"Task 'add_task' 的结果是: {result}")
+    print(f"Task 'add_task' is: {result}")
     return result
 
 if __name__ == "__main__":
