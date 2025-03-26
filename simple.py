@@ -8,7 +8,7 @@ def buy():
 if __name__ == "__main__":
     flow.from_source(
         "https://github.com/aichatbot/flows.git",
-        entrypoint="flows/simple.py:buy",
+        entrypoint="simple.py:buy",
     ).deploy(
         name="no-image-deployment",
         work_pool_name="my-docker-pool",
