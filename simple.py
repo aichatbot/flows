@@ -1,7 +1,7 @@
 from prefect import flow
 
 @flow
-def buy():
+def buy(log_prints=True):
     print("Buying securities")
 
 
