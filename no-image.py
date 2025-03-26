@@ -1,6 +1,6 @@
 from prefect import flow
 
-@flow(log_prints=True)
+@flow
 def hello_world(name: str):
     print(f"Hello!")
 
