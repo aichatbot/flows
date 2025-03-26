@@ -1,13 +1,14 @@
 from prefect import flow
 
 @flow
-def hello_world(name: str):
-    print(f"Hello!")
+def buy():
+    print("Buying securities")
+
 
 if __name__ == "__main__":
     flow.from_source(
         "https://github.com/aichatbot/flows.git",
-        entrypoint="no-image.py:hello_world",
+        entrypoint="flows/simple.py:buy",
     ).deploy(
         name="no-image-deployment",
         work_pool_name="my-docker-pool",
