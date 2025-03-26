@@ -1,16 +1,16 @@
-from prefect import flow
+from prefect import flow, task, get_run_logger
 
-@flow
-def buy(log_prints=True):
-    print("Buying securities")
+@task(log_prints=True)
+def add_task(x: int, y: int) -> int:
+    result = x + y
+    return result
 
+@flow(log_prints=True)
+def my_minio_flow(a: int, b: int):
+    """使用 MinIO 持久化的 Flow"""
+    result = add_task(x=a, y=b)
+    print(f"Task 'add_task' 的结果是: {result}")
+    return result
 
 if __name__ == "__main__":
-    flow.from_source(
-        "https://github.com/aichatbot/flows.git",
-        entrypoint="simple.py:buy",
-    ).deploy(
-        name="no-image-deployment",
-        work_pool_name="my-docker-pool",
-        build=False
-    )
+    my_minio_flow(3,2)
